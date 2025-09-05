@@ -1,0 +1,81 @@
+  * {    
+            margin: 0;
+            padding: 0;
+     }
+
+  body {
+    box-sizing: border-box;
+    grid-auto-columns: 200px 1fr;
+    grid-template-areas: "header header" "sidebar conteudo" "footer footer";
+  } 
+  .cabecalho { 
+        grid-area: header;  
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }     
+    .cabecalho .logo img { 
+        max-width: 30%;
+    }
+    .cabecalho .menu {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+    }
+    .cabecalho .menu a {
+        color: white;
+        text-decoration: none; 
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+    .cabecalho .menu a:hover {
+        color: green;
+        background-color: white;
+        border: 1px solid black;
+    }
+    .sidebar {
+        grid-area: sidebar;
+        background-color: beige;
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em
+    }
+    .sidebar h2 {
+        color: blanchedalmond;
+    }
+    .sidebar ul {
+        list-style: none;
+    }
+    .sidebar ul li a {
+        text-decoration: none;
+        color: black;
+        font-size: 1.5rem;
+    }
+    .sidebar ul li a:hover {
+        color: green;   
+    }
+    .conteudo {
+        grid-area: main;
+    }
+    .template-filmes{
+        display: flex;
+        flex-direction: row;
+       justify-content: center;
+       align-items: center;
+       flex-wrap: wrap;
+       padding: 1em;
+       gap: 1em;
+    }
+    .template-filmes .filme {
+        max-width: 30%;
+    }
+    .template-filmes .filme img {
+        max-width: 100%;
+    }
+    footer{
+        grid-area: footer;
+        background-color: black;
+    }
