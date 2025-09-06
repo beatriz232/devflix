@@ -1,81 +1,231 @@
-  * {    
-            margin: 0;
-            padding: 0;
-     }
-
-  body {
+/* Reset básico e configuração global */
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    grid-auto-columns: 200px 1fr;
-    grid-template-areas: "header header" "sidebar conteudo" "footer footer";
-  } 
-  .cabecalho { 
-        grid-area: header;  
-        background-color: black;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-around;
-    }     
-    .cabecalho .logo img { 
-        max-width: 30%;
+}
+
+/* Layout principal */
+body {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-areas:
+        "header header"
+        "sidebar conteudo"
+        "footer footer";
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    grid-area: header;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 2em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    border-bottom: 2px solid #00ff88;
+}
+
+.cabecalho .logo img {
+    max-width: 140px;
+}
+
+.cabecalho .menu {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5em;
+}
+
+.cabecalho .menu a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.cabecalho .menu a:hover {
+    color: #00ff88;
+    border-bottom: 2px solid #00ff88;
+    padding-bottom: 3px;
+}
+
+/* Barra lateral */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em 1em;
+    border-right: 2px solid #00ff88;
+}
+
+.sidebar h2 {
+    color: #00ff88;
+    margin-bottom: 0.5em;
+    font-size: 1.5rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #00ff88;
+    padding-left: 5px;
+}
+
+/* Conteúdo principal */
+.conteudo {
+    grid-area: conteudo;
+    padding: 2em;
+}
+
+/* Títulos de seção (Filmes e Séries) */
+.conteudo h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 2em 0 1.5em;
+    color: #00ff88;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Container de filmes e séries */
+.template-filmes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+/* Cada card */
+.template-filmes .filme {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 220px;
+    min-height: 470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.template-filmes .filme:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,255,136,0.5);
+}
+
+.template-filmes .filme img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #333;
+}
+
+.template-filmes .filme h3 {
+    padding: 0.8em;
+    font-size: 1.1rem;
+    text-align: center;
+    font-weight: bold;
+    color: #00ff88;
+}
+
+.template-filmes .filme p {
+    color: #ccc;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0 0.8em 1em 0.8em;
+    line-height: 1.4;
+}
+
+/* Rodapé */
+footer {
+    grid-area: footer;
+    background-color: #1c1c1c;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 1em;
+    border-top: 2px solid #00ff88;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "conteudo"
+            "footer";
+        padding: 1rem;
     }
-    .cabecalho .menu {
-        display: flex;
-        flex-direction: row;
-        gap: 1em;
-    }
-    .cabecalho .menu a {
-        color: white;
-        text-decoration: none; 
-        font-weight: 700;
-        font-size: 1.5rem;
-    }
-    .cabecalho .menu a:hover {
-        color: green;
-        background-color: white;
-        border: 1px solid black;
-    }
-    .sidebar {
-        grid-area: sidebar;
-        background-color: beige;
-        display: flex;
+
+    .cabecalho {
         flex-direction: column;
+        justify-content: center;
+        text-align: center;
         gap: 1em;
-        padding: 1em
     }
-    .sidebar h2 {
-        color: blanchedalmond;
+
+    .cabecalho .menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8em;
     }
+
+    .sidebar {
+        flex-direction: row;
+        justify-content: center;
+        padding: 1em;
+        border-right: none;
+        border-bottom: 2px solid #00ff88;
+    }
+
     .sidebar ul {
-        list-style: none;
-    }
-    .sidebar ul li a {
-        text-decoration: none;
-        color: black;
-        font-size: 1.5rem;
-    }
-    .sidebar ul li a:hover {
-        color: green;   
-    }
-    .conteudo {
-        grid-area: main;
-    }
-    .template-filmes{
         display: flex;
         flex-direction: row;
-       justify-content: center;
-       align-items: center;
-       flex-wrap: wrap;
-       padding: 1em;
-       gap: 1em;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
     }
+
+    .sidebar ul li a {
+        display: flex;
+        justify-content: center;
+    }
+
+    .template-filmes {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .template-filmes .filme {
-        max-width: 40%;
+        width: 90%;
+        max-width: 300px;
     }
-    .template-filmes .filme img {
-        max-width: 100%;
-    }
-    footer{
-        grid-area: footer;
-        background-color: black;
-    }
+}
+

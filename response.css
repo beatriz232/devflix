@@ -1,0 +1,64 @@
+/* Responsividade */
+@media (max-width: 720px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "sidebar"
+      "conteudo"
+      "footer";
+  }
+
+  /* Cabeçalho */
+  .cabecalho {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 1em;
+  }
+
+  .cabecalho .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8em;
+  }
+
+  /* Logo centralizado */
+  .cabecalho .logo {
+    text-align: center;
+  }
+
+  /* Sidebar horizontal */
+  .sidebar {
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+    border-right: none;
+    border-bottom: 2px solid #00ff88;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .sidebar ul li a {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Filmes em coluna */
+  .template-filmes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .template-filmes .filme {
+    width: 90%;      /* ocupa quase toda a tela */
+    max-width: 300px;
+    padding: 0.5rem;
+  }
+}
